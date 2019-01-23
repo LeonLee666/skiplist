@@ -1,5 +1,3 @@
-#pragma once
-
 #include<time.h>
 #include<iostream>
 #include<vector>
@@ -113,7 +111,7 @@ void SkipList<K, V>::Insert(K key, V value) {
     int leve = Random();                                    //产生一个随机层数
     _maxLeve < leve ? _maxLeve = leve : _maxLeve;                 //更新跳表的最大层数
     Node *newNode = new Node(key, value, leve);                  //创建一个节点
-    for (i = 0; i < leve; i++) {
+    for (i = 0; i < leve; i++) {      // bottom to up modify pointer
         if (i < j) {
             newNode->_pleve[i] = s[j - i - 1]->_pleve[i];
             s[j - i - 1]->_pleve[i] = newNode;

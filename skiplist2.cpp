@@ -307,15 +307,15 @@ namespace microdb
 int main()
 {
     microdb::SkipList<int> skiplist(0);
-    std::thread threads[10000];
+    std::thread threads[1];
     timeval start, end;
     gettimeofday(&start, NULL);
-    for (auto i = 0; i < 10000; ++i)
+    for (auto i = 0; i < 1; ++i)
     {
         threads[i] = std::thread(std::mem_fn(&microdb::SkipList<int>::put), &skiplist, i);
     }
 
-    for (auto i = 0; i < 10000; ++i)
+    for (auto i = 0; i < 1; ++i)
     {
         threads[i].join();
     }
